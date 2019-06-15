@@ -125,7 +125,7 @@ export class Selector {
             }
         }
     }
-
+    // 找到 ### 然后设置Send Request
     private static getDelimiterRows(lines: string[]): number[] {
         let rows: number[] = [];
         for (let index = 0; index < lines.length; index++) {

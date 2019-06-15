@@ -9,12 +9,12 @@ export class HttpCodeLensProvider implements CodeLensProvider {
         const blocks: CodeLens[] = [];
         const lines: string[] = document.getText().split(Constants.LineSplitterRegex);
         const requestRanges: [number, number][] = Selector.getRequestRanges(lines);
-
+        let index = 0;
         for (let [blockStart, blockEnd] of requestRanges) {
             const range = new Range(blockStart, 0, blockEnd, 0);
             const cmd: Command = {
                 arguments: [document, range],
-                title: 'Send Request',
+                title: 'Send Request-' + index++,
                 command: 'rest-client.request'
             };
             blocks.push(new CodeLens(range, cmd));
